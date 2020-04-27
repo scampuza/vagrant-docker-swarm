@@ -12,7 +12,7 @@ numworkers = 2
 
 # VirtualBox settings
 # Increase vmmemory if you want more than 512mb memory in the vm's
-vmmemory = 512
+vmmemory = 1024
 # Increase numcpu if you want more cpu's per vm
 numcpu = 1
 
@@ -53,7 +53,7 @@ if not http_proxy.to_s.strip.empty?
     	puts "Installing plugins: #{plugins_to_install.join(' ')}"
     	if system "vagrant plugin install #{plugins_to_install.join(' ')}"
         	exec "vagrant #{ARGV.join(' ')}"
-    	else
+    	else  
         	abort "Installation of one or more plugins has failed. Aborting."
     	end
 	end
@@ -66,7 +66,7 @@ Vagrant.configure("2") do |config|
     end
     
     config.vm.define "manager" do |i|
-      i.vm.box = "ubuntu/trusty64"
+      i.vm.box = "ubuntu/bionic64"
       i.vm.hostname = "manager"
       i.vm.network "private_network", ip: "#{manager_ip}"
       # Proxy
@@ -88,7 +88,7 @@ Vagrant.configure("2") do |config|
 
   instances.each do |instance| 
     config.vm.define instance[:name] do |i|
-      i.vm.box = "ubuntu/trusty64"
+      i.vm.box = "ubuntu/bionic64"
       i.vm.hostname = instance[:name]
       i.vm.network "private_network", ip: "#{instance[:ip]}"
       # Proxy
