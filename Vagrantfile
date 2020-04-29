@@ -8,7 +8,7 @@
 
 auto = ENV['AUTO_START_SWARM'] || false
 # Increase numworkers if you want more than 3 nodes
-numworkers = 2
+numworkers = 3
 
 # VirtualBox settings
 # Increase vmmemory if you want more than 512mb memory in the vm's
